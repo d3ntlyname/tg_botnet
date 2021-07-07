@@ -10,7 +10,7 @@ bot4 = Client("bot4", '5435853', '96d1fbc874681053e19ecd49897fac51')
 @bot4.on_message(filters.command("raid", prefixes="_"))
 def spam(self, msg):
  for _ in range(100):
-  msg.reply("Рейд от: @dently")
+  msg.reply("ВАШЕЙ ГРУППЕ - ПИЗДЕЦ\nBY @DENTLY 🙂")
   sleep(1)
 
 bot4.run()
