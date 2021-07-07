@@ -10,7 +10,7 @@ bot1 = Client("bot1", '6379199', '856b127610166f52be190bc9ba5b922b')
 @bot1.on_message(filters.command("raid", prefixes="_"))
 def spam(self, msg):
  for _ in range(100):
-  msg.reply("Кaжется, рeйд нaчинается...\nby @dently and @vellogs")
+  msg.reply("Кaжется, рeйд нaчинается... by @dently")
   sleep(1)
 
 bot1.run()
