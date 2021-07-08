@@ -40,4 +40,15 @@ def type(self, message):
   sleep(0.20)
  message.edit(f"{orig[:len(orig)-1]}")
  
+@app.on_message(filters.command("tik", prefixes=".") & filters.me)
+def tik(self, message):
+  args = message.text.split('.tik ', maxsplit=1)[1]
+ if not args:
+  message.edit('<b>Нету аргументов.</b>')
+  return
+ message.edit('<b>Загрузка...</b>')
+ r = app.inline_query('tikdobot', args)
+ app.send_file(message.chat.id, r[1].result.content.url)
+ message.delete()
+
 app.run()
