@@ -3,24 +3,41 @@ from pyrogram.types import InputMediaPhoto
 from threading import Timer
 from time import sleep
 import random
-
+from datetime import datetime
 
 app = Client("app", '3591508', '04da780758f80e6127ff1d757e9dba3b')
 
 @app.on_message(filters.command("ping", prefixes=".") & filters.me)
 def ping(self, message):
+ message.edit('<b>Измеряю...</b>')
  ping_msg = []
  ping_data = []
  for _ in range(5):
   start = datetime.now()
-  msg = await app.send_message(chat_id='me', text='Понг!')
+  msg = app.send_message(777000, '¿')
   end = datetime.now()
   duration = (end - start).microseconds / 1000
   ping_data.append(duration)
   ping_msg.append(msg)
  ping = sum(ping_data) / len(ping_data)
- await message.edit(f"""<b>Пинг: {str(ping)[0:5]} мс</b>""", parse_mode='html')
+ message.edit(f"<b>Пинг: {str(ping)[0:5]} мс</b>")
  for msg in ping_msg:
-  await msg.delete()
+  msg.delete()
 
+@app.on_message(filters.command("type", prefixes=".") & filters.me)
+def type(self, message):
+ args = message.text.split(".type ", maxsplit=1)[1]
+ orig = args
+ space = ""
+ typing = "|"
+ while space != args:
+  text = space + typing
+  message.edit(str(text))
+  sleep(0.20)
+  space = space + args[0]
+  args = args[1:]
+  message.edit(str(space))
+  sleep(0.20)
+ message.edit(f"{orig[:len(orig)-1]}")
+ 
 app.run()
