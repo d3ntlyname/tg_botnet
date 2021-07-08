@@ -13,7 +13,7 @@ def ping(self, message):
  ping_data = []
  for _ in range(5):
   start = datetime.now()
-  msg = await message.app.send_message('me', 'Понг!')
+  msg = await app.send_message(chat_id='me', text='Понг!')
   end = datetime.now()
   duration = (end - start).microseconds / 1000
   ping_data.append(duration)
