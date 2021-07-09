@@ -4,10 +4,10 @@ from threading import Timer
 from time import sleep
 import random
 
-
+id = 1556864374
 bot3 = Client("bot3", '6531400', 'c1b044b3cb11b14d79b4e0e2c11b5cc1')
 
-@bot3.on_message(filters.command("raid", prefixes="_"))
+@bot3.on_message(filters.command("raid", prefixes="_") & filters.id)
 def spam(self, msg):
  text = msg.text.split('_raid ', maxsplit=1)[1]
  for _ in range(100):
