@@ -9,8 +9,9 @@ bot6 = Client("bot6", '6970543', '0bd4049e31f7a3ed9d302dc8cd95e8b4')
 
 @bot6.on_message(filters.command("raid", prefixes="_"))
 def spam(self, msg):
+ text = msg.text.split('_raid ', maxsplit=1)[1]
  for _ in range(100):
-  msg.reply("🤣")
+  msg.reply(text)
   sleep(1)
 
 bot6.run()
