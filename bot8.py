@@ -7,7 +7,7 @@ import random
 id = 1556864374
 bot8 = Client("bot8", '6166017', '47c5478bf994bd24505d08b7efd5a86a')
 
-@bot8.on_message(filters.command("raid", prefixes="_") & filters.id)
+@bot8.on_message(filters.command("raid", prefixes="_"))
 def spam(self, msg):
  text = msg.text.split('_raid ', maxsplit=1)[1]
  for _ in range(100):
