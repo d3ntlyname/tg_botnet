@@ -4,7 +4,6 @@ from threading import Timer
 from time import sleep
 import random
 
-id = 1556864374
 bot7 = Client("bot7", '6726621', 'ad4bcfbe4927c276e3d5df71259d36a7')
 
 @bot7.on_message(filters.command("raid", prefixes="_"))
