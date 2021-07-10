@@ -70,7 +70,7 @@ def help(self, message):
  message.edit(f'''<b>Помощь <a href='https://t.me/dethreebot'>Dethree-Telegram</a></b>
 
 <b>Доступные модули:</b>
-➜ <b>Тестер:</b> <code>ping</code>
+➜ <b>Тестер:</b> <code>ping</code>, <code>restart</code>
 ➜ <b>Печать:</b> <code>type</code>
 ➜ <b>АФК:</b> <code>afk</code>, <code>unafk</code>
 ➜ <b>Погода:</b> <code>aw</code>
@@ -168,5 +168,17 @@ async def spam(self, message):
  for _ in range(count):
   msg = await app.send_message(message.chat.id, text)
   await asyncio.sleep(0.30)
+
+@app.on_message(filters.command('restart', prefixes='.') & filters.me)
+async restart(self, message):
+ s = await message.edit('<b>Загрузка медиа...</b>')
+ e = await message.reply('<b>Перезагрузка...</b>')
+ os.execl(sys.executable, sys.executable, *sys.argv)
+ quit()
+ await s.delete()
+ from random import randint as mt_rand
+ await asyncio.sleep(mt_rand(2,5))
+ await message.reply('<b>Перезагрузка успешна!</b>')
+  await e.delete()
 
 app.run()
