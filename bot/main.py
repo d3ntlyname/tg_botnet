@@ -14,6 +14,8 @@ print(f'{dethree}\n\nУстановка...')
 req = ['pyrogram', 'tgcrypto', 'asyncio']
 for req in req:
  terminal(f'pip3 install {req}')
+api_id = input('Введите API_ID: ')
+api_hash = input('Введите API_HASH: ')
 import subprocess
 from pyrogram import Client, filters
 from pyrogram.types import InputMediaPhoto
@@ -26,7 +28,7 @@ import os
 from pyrogram.handlers import MessageHandler
 from datetime import datetime
 
-app = Client("app")
+app = Client("app", api_id, api_hash)
 with app:
  app.join_chat('dethreebot')
  terminal('clear')
