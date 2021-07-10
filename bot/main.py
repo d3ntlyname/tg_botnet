@@ -21,10 +21,7 @@ from pyrogram import Client, filters
 from pyrogram.types import InputMediaPhoto
 from threading import Timer
 from time import sleep
-import random
-import asyncio
-import requests 
-import os
+import random; import asyncio; import sys; import requests; import os
 from pyrogram.handlers import MessageHandler
 from datetime import datetime
 
@@ -161,9 +158,6 @@ async def purge(self, message):
    
 @app.on_message(filters.command('spam', prefixes='.') & filters.me)
 async def spam(self, message):
- if len(message.text.split()) <= 2 or len(message.text.split()) != 2:
-  message.edit('<b>Нету аргументов.\nПример:</b> <code>.spam <кол-во> <текст></code>')
-  return
  count = message.command[1]
  text = ' '.join(message.command[2:])
  count = int(count)
