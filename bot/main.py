@@ -158,7 +158,7 @@ async def purge(self, message):
    
 @app.on_message(filters.command('spam', prefixes='.') & filters.me)
 async def spam(self, message):
- if not message.command[2]:
+ if len(message.text.split()) <= 2 or len(message.text.split()) != 2:
   message.edit('<b>Нету аргументов.\nПример:</b> <code>.spam <кол-во> <текст></code>')
   return
  count = message.command[1]
