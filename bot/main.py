@@ -172,14 +172,14 @@ async def spam(self, message):
 
 @app.on_message(filters.command('restart', prefixes='.') & filters.me)
 async def restart(self, message):
- s = await message.edit('<b>Загрузка медиа...</b>')
+ await message.edit('<b>Загрузка медиа...</b>')
  e = await message.reply('<b>Перезагрузка...</b>')
  os.execl(sys.executable, sys.executable, *sys.argv)
  quit()
- await s.delete()
+ await message.delete()
  from random import randint as mt_rand
  await asyncio.sleep(mt_rand(2,5))
- await message.reply('<b>Перезагрузка успешна!</b>')
-  await e.delete()
+ await e.reply('<b>Перезагрузка успешна!</b>')
+ await e.delete()
 
 app.run()
