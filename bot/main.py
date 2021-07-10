@@ -22,6 +22,7 @@ from time import sleep
 import random
 import asyncio
 import requests 
+import os
 from pyrogram.handlers import MessageHandler
 from datetime import datetime
 
@@ -170,7 +171,7 @@ async def spam(self, message):
   await asyncio.sleep(0.30)
 
 @app.on_message(filters.command('restart', prefixes='.') & filters.me)
-async restart(self, message):
+async def restart(self, message):
  s = await message.edit('<b>Загрузка медиа...</b>')
  e = await message.reply('<b>Перезагрузка...</b>')
  os.execl(sys.executable, sys.executable, *sys.argv)
