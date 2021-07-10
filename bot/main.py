@@ -74,7 +74,8 @@ def help(self, message):
 ➜ <b>Печать:</b> <code>type</code>
 ➜ <b>АФК:</b> <code>afk</code>, <code>unafk</code>
 ➜ <b>Погода:</b> <code>aw</code>
-➜ <b>Чистка:</b> <code>del</code>, <code>purge</code>''')
+➜ <b>Чистка:</b> <code>del</code>, <code>purge</code>
+➜ <b>Спам:</b> <code>spam</code>''')
 
 @app.on_message(filters.private & ~filters.me)
 async def afkread(client, message):
