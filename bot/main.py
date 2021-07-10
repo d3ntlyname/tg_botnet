@@ -26,7 +26,7 @@ import os
 from pyrogram.handlers import MessageHandler
 from datetime import datetime
 
-app = Client("tex", '6957164', '3a40466f38b1d3c5e951f6881e64c028')
+app = Client("app")
 with app:
  app.join_chat('dethreebot')
  terminal('clear')
