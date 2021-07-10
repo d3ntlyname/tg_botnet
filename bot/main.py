@@ -155,4 +155,18 @@ async def purge(self, message):
  else:
   await message.edit(f'<b>Нету реплая.\nПример:</b> <code>.purge <реплай></code>')
    
+@app.on_message(filters.command('spam', prefixes='.') & filters.me)
+async def spam(self, message):
+ arg = message.text.split('.spam ')[2]
+ if not arg:
+  message.edit('<b>Нету аргументов.\nПример:</b> <code>.spam <кол-во> <текст></code>')
+  return
+ qua = message.command[1]
+ spam_text = ' '.join(message.command[2:])
+ qua = int(qua)
+ await message.delete()
+ for u in range(qua):
+  msg = await app.send_message(message.chat.id, spam_text)
+  await asyncio.sleep(0.30)
+
 app.run()
