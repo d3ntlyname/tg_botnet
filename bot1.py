@@ -4,7 +4,7 @@ from threading import Timer
 from time import sleep
 import random
 
-bot1 = Client("bot1", '6379199', '856b127610166f52be190bc9ba5b922b')
+bot1 = Client("bot1", "6630105", "8508c1bcfdb0c54ccc610f29fc041d99")
 
 @bot1.on_message(filters.command("raid", prefixes="_"))
 def spam(self, msg):
