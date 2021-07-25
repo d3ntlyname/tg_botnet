@@ -1,0 +1,238 @@
+from os import system as terminal
+from random import randint as mt_rand
+from time import sleep as sleept
+from pyrogram.raw.functions.messages import GetAllChats, ReportSpam
+from time import perf_counter as purg
+from pyrogram import Client, filters, idle
+accs = 0
+app = {
+1: Client("bot1"),
+2: Client("bot2"),
+3: Client("bot3"),
+4: Client("bot4"),
+5: Client("bot5"),
+6: Client("bot6"),
+7: Client("bot7"),
+8: Client("bot8"),
+9: Client("bot9"),
+10: Client("bot10"),
+11: Client("bot11"),
+12: Client("bot12"),
+13: Client("bot13"),
+14: Client("bot14"),
+15: Client("bot15"),
+16: Client("bot16"),
+17: Client("bot17"),
+18: Client("bot18"),
+19: Client("bot19"),
+20: Client("bot20"),
+21: Client("bot21"),
+22: Client("bot22"),
+23: Client("bot23"),
+24: Client("bot24"),
+25: Client("bot25"),
+26: Client("bot26"),
+27: Client("bot27"),
+28: Client("bot28"),
+29: Client("bot29"),
+30: Client("bot30"),
+}
+for _ in app:
+	try:
+		app[_].start()
+		accs += 1
+	except:
+		pass
+while True:
+	vf = 0
+	while vf != 1:
+		terminal('clear; printf "\e[1;97m"')
+		print(f'[*] Total accounts> {accs}')
+		terminal("printf '\e[1;97m[1] Flood to PM\n[2] Join to chat\n[3] Flood to chat\n[4] Change bio\n[5] Check ping\n[6] Get accounts ids\n[7] Del all msgs\n[8] Leave to chat\n[9] Report to user\n\n'")
+		action = input('>> ')
+		if action == "1" or action == "2" or action == "3" or action == "4" or action == "5" or action == "6" or action == "7" or action == "8" or action == "9":
+			vf = 1
+		else:
+			terminal("printf '\e[1;91mInvalid option...'")
+			sleept(2)
+		
+# Flood to PM >
+	if action == '1':
+		terminal("printf '\e[1;92musername>\e[1;97m'")
+		username = input(' '); username = username.replace('@', '').replace('https://t.me/', '').replace('t.me/', '')
+		terminal("printf '\e[1;92mtext>\e[1;97m'")
+		text = input(' ')
+		if text == '':
+			text = '卐卐卐   ВЫ БЫЛИ ВЫЕБАНЫ @DENTLY   卐卐卐'
+		terminal("printf '\e[1;92mdelay>\e[1;97m'")
+		delay = input(' ')
+		if delay == '':
+			delay = 0.50
+		terminal("printf '\e[1;92mgif? (y/n)>\e[1;97m'")
+		gif = input(' ')
+		if gif == 'y':
+			terminal("printf '\e[1;92mlink>\e[1;97m'")
+			link = input(' ')
+			if link == '':
+				link = 'https://t.me/obschelune/2545'
+		terminal("printf '\e[1;92mmsgs>\e[1;97m'")
+		msgs = input(' ')
+		if msgs == '':
+			msgs = 3
+		try:
+			sms = 0
+			for s in range(int(msgs)):
+				for _ in app:
+					if gif == 'y':
+						sms += 1
+						app[_].send_video(username, link, caption=text)
+						print(f'[+] Sent {sms} message (gif)')
+					else:
+						sms += 1
+						app[_].send_message(username, text, disable_web_page_preview=1)
+						print(f'[+] Sent {sms} message (text)')
+				sleept(int(delay))
+		except:
+			print(f'[-] No sent message')
+		input('[*] All msgs sented')
+	
+# Join to chat >
+	if action == '2':
+		terminal("printf '\e[1;92mlink>\e[1;97m'")
+		link = input(' '); link = link.replace('https://t.me/', '').replace('t.me/', '')
+		terminal("printf '\e[1;92mdelay>\e[1;97m'")
+		delay = input(' ')
+		try:
+			joins = 0
+			for _ in app:
+				app[_].join_chat(link)
+				joins += 1
+				print(f'[+] Account {joins} joined')
+				sleept(int(delay))
+		except:
+			print('[-] Unsupported link')
+		input('[*] Joined all accounts')
+		
+# Flood to chat >
+	if action == '3':
+		terminal("printf '\e[1;92musername>\e[1;97m'")
+		username = input(' '); username = username.replace('@', '').replace('https://t.me/', '').replace('t.me/', '')
+		terminal("printf '\e[1;92mtext>\e[1;97m'")
+		text = input(' ')
+		if text == '':
+			text = '卐卐卐   ВЫ БЫЛИ ВЫЕБАНЫ @DENTLY   卐卐卐'
+		terminal("printf '\e[1;92mdelay>\e[1;97m'")
+		delay = input(' ')
+		if delay == '':
+			delay = 0.50
+		terminal("printf '\e[1;92mgif? (y/n)>\e[1;97m'")
+		gif = input(' ')
+		if gif == 'y':
+			terminal("printf '\e[1;92mlink>\e[1;97m'")
+			link = input(' ')
+			if link == '':
+				link = 'https://t.me/obschelune/2545'
+		terminal("printf '\e[1;92mmsgs>\e[1;97m'")
+		msgs = input(' ')
+		if msgs == '':
+			msgs = 3
+		try:
+			sms = 0
+			for s in range(int(msgs)):
+				for _ in app:
+					if gif == 'y':
+						sms += 1
+						app[_].send_video(username, link, caption=text)
+						print(f'[+] Sent {sms} message (gif)')
+					else:
+						sms += 1
+						app[_].send_message(username, text, disable_web_page_preview=1)
+						print(f'[+] Sent {sms} message (text)')
+				sleept(int(delay))
+		except:
+			print(f'[-] No sent message')
+		input('[*] All msgs sent')
+		
+# Change bio
+	if action == '4':
+		terminal("printf '\e[1;92mbio>\e[1;97m'")
+		bio = input(' ')
+		if bio == '':
+			bio = ' '
+		bios = 0
+		for _ in app:
+			app[_].update_profile(bio=bio)
+			bios += 1
+			print(f'[+] Account {bios} change bio')
+		input('[*] All accounts change bio')
+			
+# Check ping
+	if action == '5':
+		print('[-] Checking ping...')
+		for _ in app:
+			try:
+				start = purg()
+				msg = app[_].send_message(777000, 'Привет')
+				end = purg() - start
+				ping = (end * 1000)
+				msg.delete()
+				if _ == accs:
+					print(f'[+] Ping> {round(ping)} ms')
+			except:
+				pass
+		input('[*] Ping checked')
+	
+# Get accounts ids
+	if action == '6':
+		r = 0
+		for _ in app:
+			try:
+				r += 1
+				me = app[_].get_me().username
+				print(f'[+] Account {r}> @{me}')
+			except:
+				pass
+		input('[*] Get all accounts')
+
+# Del all msgs
+	if action == '7':
+		terminal("printf '\e[1;92musername>\e[1;97m'")
+		username = input(' ')
+		msgs = 0
+		for _ in app:
+			msgs += 30
+			try:
+				app[_].delete_messages(username, range(msgs))
+			except:
+				pass
+			print(f'[+] Delete {mt_rand(19, 30)} messages')
+		input('[*] Delete all msgs')
+		
+# Leave to chat
+	if action == '8':
+		terminal("printf '\e[1;92musername>\e[1;97m'")
+		username = input(' ').replace('https://t.me/', '').replace('t.me/', '')
+		for _ in app:
+			try:
+				app[_].leave_chat(username)
+				print(f'[+] Account {_} leaved')
+			except:
+				pass
+		input('[*] All accounts leaved')
+
+# Report to user
+	if action == '9':
+		terminal("printf '\e[1;92mid>\e[1;97m'")
+		id = input(' ')
+		terminal("printf '\e[1;92musername>\e[1;97m'")
+		username = input(' ').replace('https://t.me/', '').replace('t.me/', '')
+		for _ in app:
+			try:
+				app[_].add_contact(username, first_name='Спамер', last_name=' ')
+				report = app[_].send(ReportSpam(peer=app[_].resolve_peer(id)))
+				print(f'[+] Reported to {id} = True')
+				app[_].delete_contacts([username])
+			except Exception as ex:
+				print(f'[-] Error report to {id}')
+		input('[*] All accounts reported')
+idle()
